@@ -1,7 +1,7 @@
 const PI = 3.1415;
 const initialRadius = 5;
 const minimumSpacePerPlant = 0.8;
-const initialPlantCount = 100;  
+const initialPlantCount = 100; 
 
 function calculateArea(radius) {
   return PI * radius * radius;
@@ -32,15 +32,19 @@ function calculateExpandedRadius(additionalSpace) {
   return Math.sqrt(expandedArea / PI);
 }
 
+// Error block using try and catch
+try {
+  // Calculate additional space and expanded radius for 10 weeks
+  let additionalSpace = calculateAdditionalSpace(10);
+  let expandedRadius = calculateExpandedRadius(additionalSpace);
 
-console.log(predictPlantGrowth(1));
-console.log(predictPlantGrowth(2));
-console.log(predictPlantGrowth(3));
+  if (additionalSpace > calculateArea(initialRadius)) {
+    throw new Error('Not enough space to accommodate the provided number of plants.');
+  }
 
-// Calculate more space and expand radius for 10 weeks
-let additionalSpace = calculateAdditionalSpace(10);
-let expandedRadius = calculateExpandedRadius(additionalSpace);
+  console.log(`Additional space required after 10 weeks: ${additionalSpace} square meters`);
+  console.log(`Expanded garden radius after 10 weeks: ${expandedRadius} meters`);
 
-console.log(`Additional space required after 10 weeks: ${additionalSpace} square meters`);
-console.log(`Expanded garden radius after 10 weeks: ${expandedRadius} meters`);
-let ratmancaeeee 
+} catch (error) {
+  console.error(error.message);
+}
